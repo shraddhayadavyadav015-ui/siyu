@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Cuttu Siyuu ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffb199);
+    min-height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Segoe UI',sans-serif;
+}
+
+/* Floating Hearts */
+
+.heart{
+    position:absolute;
+    color:white;
+    opacity:0.7;
+    animation:float linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-150px);
+    }
+}
+
+/* Hugging Bears */
+
+.bears{
+    position:fixed;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:70px;
+    animation:hug 2s infinite ease-in-out;
+    z-index:5;
+}
+
+@keyframes hug{
+    0%,100%{
+        transform:translateX(-50%) scale(1);
+    }
+    50%{
+        transform:translateX(-50%) scale(1.08);
+    }
+}
+
+/* Message Box */
+
+.container{
+    width:85%;
+    max-width:900px;
+    height:75vh;
+    overflow-y:auto;
+
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+
+    border-radius:25px;
+    padding:30px;
+
+    color:white;
+    text-align:center;
+    line-height:2;
+    font-size:1.4rem;
+
+    box-shadow:0 0 40px rgba(255,255,255,0.3);
+
+    z-index:10;
+}
+
+/* Scrollbar */
+
+.container::-webkit-scrollbar{
+    width:6px;
+}
+
+.container::-webkit-scrollbar-thumb{
+    background:white;
+    border-radius:10px;
+}
+
+/* Words */
+
+.word{
+    opacity:0;
+    display:inline-block;
+    margin-right:7px;
+    transform:translateY(15px);
+}
+
+.show{
+    animation:appear .6s forwards;
+}
+
+@keyframes appear{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Final Love Message */
+
+.final-love{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0);
+
+    font-size:4rem;
+    font-weight:bold;
+    color:white;
+
+    text-shadow:
+    0 0 10px white,
+    0 0 20px pink,
+    0 0 40px red;
+
+    z-index:100;
+
+    animation:lovePopup 2s forwards;
+}
+
+@keyframes lovePopup{
+    to{
+        transform:translate(-50%,-50%) scale(1);
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="bears">
+🐻‍❄️🫂🐻
+</div>
+
+<div class="container">
+    <p id="message"></p>
+</div>
+
+<script>
+
+/* Hearts */
+
+for(let i=0;i<50;i++){
+
+    let heart=document.createElement("div");
+    heart.classList.add("heart");
+
+    heart.innerHTML="❤️";
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(15+Math.random()*25)+"px";
+    heart.style.animationDuration=(5+Math.random()*8)+"s";
+
+    document.body.appendChild(heart);
+}
+
+/* Message */
+
+const text = `TO THE PERSON VERY CLOSE TO MY HEART, MY EVERYTHING, MY LIFE, MY LOVE, MY CUTTUUU SIYUUU ❤️
+
+I LOVEE U VERY MUCH ❤️
+
+MY SIYU, U HAVE BEEN A PERSON WHO HAS JUST TURNED MY LIFE FROM NOTHING TO SOMETHING ENJOYABLE.
+
+IF I TELL, I WASN'T EVEN PLANNING TO LIVE FOR MORE THAN 35 YEARS KYUKI AISA KUCH THA HI NAHI JISKE LIYE MEIN JEENA CHAHU.
+
+TUMSE MILNE KE BAAD AISA LAGA KI KUCH LIFE HAI MERI BHI JEENE KE LIYE.
+
+AUR SACCHI BOLU TOH MEIN APNI LIFE KE JITNE BHI SAAL HONGE, AB SE AAGE TAK TERE SAATH REHNA CHAHTA HU.
+
+TU HI MERI APNI BACCHI JAISI HAI ❤️
+
+JAB TU ROTI HAI TOH BURA MUJHE LAGTA HAI.
+
+JAB TU BIMAR HOTI HAI TOH TABIYAT MERI KHARAB HOTI HAI.
+
+KASAM SE, MAINE KABHI SOCHA NAHI THA KI EK CHOTU SI BACCHI AAKE MERI LIFE BADAL DEGI ❤️
+
+YOU ARE MY EVERYTHING.
+
+PLZZZ BE BY MY SIDE ❤️
+
+IN THE END...
+
+LOVEEEEEE YOUUUUUU 3000 ❤️❤️🫂`;
+
+const message=document.getElementById("message");
+
+const words=text.split(" ");
+
+words.forEach((word,index)=>{
+
+    let span=document.createElement("span");
+
+    span.classList.add("word");
+
+    span.innerText=word;
+
+    message.appendChild(span);
+
+    setTimeout(()=>{
+        span.classList.add("show");
+    },index*250);
+});
+
+/* Final Animation */
+
+setTimeout(()=>{
+
+    let final=document.createElement("div");
+
+    final.classList.add("final-love");
+
+    final.innerHTML="❤️ LOVE YOU 3000 ❤️";
+
+    document.body.appendChild(final);
+
+},words.length*250 + 3000);
+
+</script>
+
+</body>
+</html>
